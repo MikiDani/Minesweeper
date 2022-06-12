@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Minesweeper</title>
 </head>
+
 <body>
     <?php
     session_start();
@@ -104,7 +106,7 @@
     // DELETE PROFIL
     if (isset($_POST["deleteprofil"])) {
         if (isset($_COOKIE["user"])) {
-            $username=$_COOKIE["user"];
+            $username = $_COOKIE["user"];
             $sql = "DELETE FROM users WHERE nickname = '$username'";
             if ($conn->query($sql) === TRUE) {
                 setcookie("user", $_COOKIE["user"], time() - 2000);
@@ -126,7 +128,7 @@
 
         $_SESSION["registrationerrormessage"] = "";
 
-        if ( $_SESSION["registrationname"] == "" || $_SESSION["registrationemail"] == "" || $_SESSION["registrationpassword1"] == "" || $_SESSION["registrationpassword2"] == "") {
+        if ($_SESSION["registrationname"] == "" || $_SESSION["registrationemail"] == "" || $_SESSION["registrationpassword1"] == "" || $_SESSION["registrationpassword2"] == "") {
             $done = false;
             $_SESSION["registrationerrormessage"] .= "Fields are required!<br>";
         }
@@ -152,10 +154,10 @@
         }
 
         if ($done) {
-            $registrationname=$_SESSION["registrationname"];
-            $registrationemail=$_SESSION["registrationemail"];
-            $registrationpassword=$_SESSION["registrationpassword1"];
-            $registrationdate=date("Y-m-d H:i:s");
+            $registrationname = $_SESSION["registrationname"];
+            $registrationemail = $_SESSION["registrationemail"];
+            $registrationpassword = $_SESSION["registrationpassword1"];
+            $registrationdate = date("Y-m-d H:i:s");
             $sql = "INSERT INTO users (nickname, email, userpassword, registrationdate) VALUES ('$registrationname', '$registrationemail', '$registrationpassword', '$registrationdate')";
             if ($conn->query($sql) === TRUE) {
                 setcookie("user", $registrationname, time() + 2000);
@@ -163,7 +165,7 @@
                 inputsvaluesempty($registrationinputs);
                 header("Location: index.php");
             } else {
-                echo "Error: ".$conn->error."<br>";
+                echo "Error: " . $conn->error . "<br>";
             }
         }
     }
@@ -187,22 +189,22 @@
                 <?php
                 if (isset($_COOKIE["user"])) {
                 ?>
-                    <form action="index.php" method="post">
-                        <div class="dropdown">
-                            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $_COOKIE["user"]." "; ?></button>
+                <form action="index.php" method="post">
+                    <div class="dropdown">
+                        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $_COOKIE["user"] . " "; ?></button>
                             <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1">
-                                <li>
-                                    <form action="index.php" method="post">
-                                        <input type="hidden" name="username" value="<?php echo $_COOKIE["user"]; ?>">
-                                        <a class="dropdown-item"><button type="submit" name="deleteprofil" class="btn btn-danger btn-sm">Delete Profil</button></a>
-                                    </form>
-                                </li>
-                                <li><a class="dropdown-item"><button type="submit" name="logoutsubmit" class="btn btn-primary btn-sm">Log Out</button></a></li>
-                            </ul>
-                        </div>
-                    </form>
+                            <li>
+                                <form action="index.php" method="post">
+                                    <input type="hidden" name="username" value="<?php echo $_COOKIE["user"]; ?>">
+                                    <a class="dropdown-item"><button type="submit" name="deleteprofil" class="btn btn-danger btn-sm">Delete Profil</button></a>
+                                </form>
+                            </li>
+                            <li><a class="dropdown-item"><button type="submit" name="logoutsubmit" class="btn btn-primary btn-sm">Log Out</button></a></li>
+                        </ul>
+                    </div>
+                </form>
                 <?php
-                } else { 
+                } else {
                 ?>
                     <form action="index.php" method="post">
                         <button type="submit" name="userbuttonsubmit" class="btn btn-primary">Log in</button>
@@ -284,7 +286,7 @@
             <form method="POST" action="index.php">
                 <div id="windiv" class="text-warning text-center mb-3">
                     <?php if (isset($_COOKIE["user"])) { ?>
-                        <span><?php echo $_COOKIE["user"]." "; ?>you Won!</span>
+                        <span><?php echo $_COOKIE["user"] . " "; ?>you Won!</span>
                         <p id="wintext"></p>
                         <span><button type="submit" name="winsubmit" class="btn btn-warning">OK!</button></span>
                     <?php } else { ?>
@@ -310,6 +312,7 @@
     <script src="game.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
+
 </html>
 
 <?php
