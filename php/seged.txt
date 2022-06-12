@@ -1,0 +1,56 @@
+------------
+MineSweeper
+------------
+http://mikidani.probaljaki.hu/minesweeper/index.html
+
+
+users:
+------
+id
+nickname
+userpassword
+email
+registrationdate
+
+score
+-----
+id
+userid
+recordtime
+recorddate
+tabletext
+bombs
+
+CREATE TABLE score (
+    id int NOT NULL PRIMARY KEY,
+    userid int,
+    recordtime text,
+    recorddate text,
+    tablesize text,
+    bombs text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (userid) REFERENCES users(id)
+);
+
+
+SELECT nickname, recordtime, tablesize, bombs, recorddate FROM score
+INNER JOIN users ON (score.userid = users.id)
+ORDER BY nickname DESC
+
+-------------
+ha kell 
+
+function  seevalueagreeintable($conn, $tablename, $key, $value) {
+    $sql = "SELECT $key FROM $tablename";
+    $sqlquery = $conn->query($sql);
+    $find = false;
+    while ($data = $sqlquery->fetch_assoc()) {
+        echo "b, ".$data["nickname"]."<br>";
+        echo "b, ".$value."<br>";
+        if ($data[$key]==$value) {
+            $find = true;
+            echo "BENT TALALTAM...<br>";
+        }
+    }
+    return $find;
+}
