@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +9,6 @@
     <link rel="stylesheet" href="style.css">
     <title>Minesweeper</title>
 </head>
-
 <body>
     <?php
     session_start();
@@ -183,7 +181,7 @@
         <h3 class="border-bottom border-2 border-secondary pt-2 text-center text-info">Minesweeper</h3>
         <div class="row playerhead bg-secondary">
             <div class="col-6 text-start pt-2 pb-2">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Higest Scores</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Scores</button>
             </div>
             <div class="col-6 text-end pt-2 pb-2">
                 <?php
@@ -229,7 +227,7 @@
             <div class="collapse" id="collapseExample">
                 <div class="card bg-secondary mb-3">
                     <div class="row">
-                        <h3 class="text-center my-4"><strong>Generate table:</strong></h3>
+                        <h3 class="text-center my-4"><strong>Table options:</strong></h3>
                         <div class="row mb-1 text-center" id="tableY">
                             <label class="col-3 text-end">table Y:</label>
                             <div class="col-6">
@@ -245,7 +243,7 @@
                             <label class="col-3 indicator text-start"></label>
                         </div>
                         <div class="row mb-1 text-center" id="mines">
-                            <label class="col-3 text-end">mines:</label>
+                            <label class="col-3 text-end">bombs:</label>
                             <div class="col-6">
                                 <input name="firstmines" type="range" class="form-range" min="15" step="1">
                             </div>
