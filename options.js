@@ -418,7 +418,10 @@ function seeTableWin() {
             gameOver=true;
             gameWin=true;
 
-            document.getElementById("wintext").innerHTML=`Your time: ${gameTime.printScreen()}`; 
+            let content = document.getElementById("wintext").innerHTML;
+            let contentMix = content+`You Won! Your time: ${gameTime.printScreen()}`;
+
+            document.getElementById("wintext").innerHTML=contentMix;
             document.getElementById("windiv").style.display="block";
 
             makehiddeninput ("time", gameTime.printScreen());

@@ -231,21 +231,21 @@
                         <div class="row mb-1 text-center" id="tableY">
                             <label class="col-3 text-end">table Y:</label>
                             <div class="col-6">
-                                <input name="tabley" type="range" class="form-range" min="10" max="30" step="1">
+                                <input name="tabley" type="range" class="form-range" min="5" max="30" step="1">
                             </div>
                             <label class="col-3 indicator text-start"></label>
                         </div>
                         <div class="row mb-1" id="tableX">
                             <label class="col-3 text-end">table X:</label>
                             <div class="col-6">
-                                <input name="tablex" type="range" class="form-range" min="10" max="30" step="1">
+                                <input name="tablex" type="range" class="form-range" min="5" max="30" step="1">
                             </div>
                             <label class="col-3 indicator text-start"></label>
                         </div>
                         <div class="row mb-1 text-center" id="mines">
                             <label class="col-3 text-end">bombs:</label>
                             <div class="col-6">
-                                <input name="firstmines" type="range" class="form-range" min="15" step="1">
+                                <input name="firstmines" type="range" class="form-range" min="2" step="1">
                             </div>
                             <label class="col-3 indicator text-start"></label>
                         </div>
@@ -284,11 +284,9 @@
             <form method="POST" action="index.php">
                 <div id="windiv" class="text-warning text-center mb-3">
                     <?php if (isset($_COOKIE["user"])) { ?>
-                        <span><?php echo $_COOKIE["user"] . " "; ?>you Won!</span>
-                        <p id="wintext"></p>
+                        <span id="wintext"><?php echo $_COOKIE["user"] . "! "; ?></span>
                         <span><button type="submit" name="winsubmit" class="btn btn-warning">OK!</button></span>
                     <?php } else { ?>
-                        <span>You Won!</span>
                         <span id="wintext"></span>
                     <?php } ?>
                 </div>
